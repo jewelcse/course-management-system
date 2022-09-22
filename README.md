@@ -53,6 +53,7 @@ To build and run the docker container, must have Installed the docker desktop on
 
 Before build and run the container, create a customr network first
 
+Navigate to the service then open the terminal and run the following command.
 ```bash
 docker create network assignment-1-network
 ```
