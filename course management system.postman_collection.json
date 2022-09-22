@@ -1,0 +1,2214 @@
+{
+	"info": {
+		"_postman_id": "8e230f1d-2c9a-4d26-a729-94f8fe4a1309",
+		"name": "course management system",
+		"description": "A micro-service based rest services that's manages the courses,student and teachers of an institution. There are three micro-services ex. 1. course micro-service 2. student micro-service 3. teacher micro-service. All three has their own responsibility.\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7197408"
+	},
+	"item": [
+		{
+			"name": "course service",
+			"item": [
+				{
+					"name": "Course enrollment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseId\":10,\r\n    \"studentId\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/courses/enroll",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"enroll"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Course enrollment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courseId\":13,\r\n    \"studentId\":10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/courses/enroll",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses",
+										"enroll"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:10:21 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Course Enrolled Success"
+						},
+						{
+							"name": "Already enrolled Exception",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courseId\":13,\r\n    \"studentId\":10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/courses/enroll",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses",
+										"enroll"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:10:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Opps! The course is already Enrolled by You.\",\n    \"responseCode\": \"500\"\n}"
+						},
+						{
+							"name": "Course Not Found Exception",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courseId\":10,\r\n    \"studentId\":10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/courses/enroll",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses",
+										"enroll"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:10:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Course not found for id: 10\",\n    \"responseCode\": \"404\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseName\":\"Compiler Design\",\r\n    \"courseDescription\":\"Compiler Design courseDescription\",\r\n    \"authorName\":\"Yormen\",\r\n    \"genre\":\"Computer Science\",\r\n    \"teacherId\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/courses",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create course",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courseName\":\"Compiler Design\",\r\n    \"courseDescription\":\"Compiler Design courseDescription\",\r\n    \"authorName\":\"Yormen\",\r\n    \"genre\":\"Computer Science\",\r\n    \"teacherId\":10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/courses",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:12:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Course Created Success!"
+						}
+					]
+				},
+				{
+					"name": "Update course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseName\":\"Algorithm-05\",\r\n    \"courseDescription\":\"Introduction to Algorithms\",\r\n    \"authorName\":\"Thomas H. Cormen\",\r\n    \"genre\":\"Computer Science\",\r\n    \"teacherId\":100,\r\n    \"courseId\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/courses",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update course",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courseName\":\"Algorithm-05\",\r\n    \"courseDescription\":\"Introduction to Algorithms\",\r\n    \"authorName\":\"Thomas H. Cormen\",\r\n    \"genre\":\"Computer Science\",\r\n    \"teacherId\":100,\r\n    \"courseId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/courses",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:09:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Course not found for id: 2\",\n    \"responseCode\": \"404\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/v1/courses",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all course",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/courses",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:04:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"courseName\": \"Algorithm-01\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 100,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"Algorithm-01\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 100,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"Algorithm-01\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 100,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"English\",\n        \"courseDescription\": \"Math courseDescription\",\n        \"authorName\": \"Eadl\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"Algorithm-01\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 100,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"English\",\n        \"courseDescription\": \"Math courseDescription\",\n        \"authorName\": \"Eadl\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"Algorithm-03\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"Algorithm-03\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"Algorithm-03\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"English\",\n        \"courseDescription\": \"Math courseDescription\",\n        \"authorName\": \"Eadl\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"English\",\n        \"courseDescription\": \"Math courseDescription\",\n        \"authorName\": \"Eadl\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get all courses by teacher",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/v1/courses/teachers/11",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"teachers",
+								"11"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all courses by teacher",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/courses/teachers/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses",
+										"teachers",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:12:42 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"courseName\": \"English\",\n        \"courseDescription\": \"Math courseDescription\",\n        \"authorName\": \"Eadl\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"Algorithm-03\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get all enrolled courses by student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/v1/courses/students/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"students",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all enrolled courses by student",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/courses/students/10",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses",
+										"students",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:13:49 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"courseName\": \"Algorithm-03\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"teacherId\": 2,\n        \"courseReview\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get course by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/v1/courses/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get course by id not found exception",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/courses/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses",
+										"2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:14:04 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Course not found for id: 2\",\n    \"responseCode\": \"404\"\n}"
+						},
+						{
+							"name": "Get course by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/courses/8",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses",
+										"8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:14:14 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"courseName\": \"English\",\n    \"courseDescription\": \"Math courseDescription\",\n    \"authorName\": \"Eadl\",\n    \"genre\": \"Computer Science\",\n    \"teacherId\": 2,\n    \"courseReview\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get course details by course id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/v1/courses/details/15",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"details",
+								"15"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get course details by course id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/courses/details/8",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses",
+										"details",
+										"8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:17:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"courseName\": \"English\",\n    \"courseDescription\": \"Math courseDescription\",\n    \"authorName\": \"Eadl\",\n    \"genre\": \"Computer Science\",\n    \"courseReview\": 0,\n    \"teacher\": {\n        \"firstName\": \"Md. \",\n        \"lastName\": \"Abdulliah\",\n        \"email\": \"Abdulliah@gmail.com1\",\n        \"phone\": \"329837\",\n        \"designation\": \"Masters\",\n        \"address\": \"Barishal\",\n        \"password\": \"$2a$10$fhFvUZ6Ku7Wtr4puJfyd3ONniR5CwG7snhVxjuXARhiFDD9OTbDz.\"\n    },\n    \"students\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove course by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/v1/courses/19",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"19"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove course by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/courses/19",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"courses",
+										"19"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:18:04 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Course not found for id: 19\",\n    \"responseCode\": \"404\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "teacher service",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Md. \",\r\n    \"lastName\":\"Rana\",\r\n    \"email\":\"rana@gmail.com1\",\r\n    \"phone\":\"329837\",\r\n    \"password\":\"rana123\",\r\n    \"designation\":\"AST\",\r\n    \"address\":\"Barishal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/teachers/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"teachers",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\":\"Md. \",\r\n    \"lastName\":\"Rana\",\r\n    \"email\":\"rana@gmail.com1\",\r\n    \"phone\":\"329837\",\r\n    \"password\":\"rana123\",\r\n    \"designation\":\"AST\",\r\n    \"address\":\"Barishal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/api/v1/teachers/signup",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"teachers",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:20:27 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Registration Completed Successfully!"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"rana@gmail.com1\",\r\n    \"password\":\"rana123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/teachers/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"teachers",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"rana@gmail.com1\",\r\n    \"password\":\"rana123\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/api/v1/teachers/signin",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"teachers",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "17"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:21:09 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Login Successful!"
+						}
+					]
+				},
+				{
+					"name": "Get all teachers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/teachers",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"teachers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all teachers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/api/v1/teachers",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"teachers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:21:23 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"firstName\": \"Md. \",\n        \"lastName\": \"Abdulliah\",\n        \"email\": \"Abdulliah@gmail.com1\",\n        \"phone\": \"329837\",\n        \"designation\": \"Masters\",\n        \"address\": \"Barishal\",\n        \"password\": \"$2a$10$fhFvUZ6Ku7Wtr4puJfyd3ONniR5CwG7snhVxjuXARhiFDD9OTbDz.\",\n        \"courses\": null\n    },\n    {\n        \"firstName\": \"Md. \",\n        \"lastName\": \"Rana\",\n        \"email\": \"rana@gmail.com1\",\n        \"phone\": \"329837\",\n        \"designation\": \"AST\",\n        \"address\": \"Barishal\",\n        \"password\": \"$2a$10$cTLO5zucsA4ezm.8upaDEuDwJ9HNMGSb76KLEV2nc/lXxpp7B0OfO\",\n        \"courses\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get all courses by teacher id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/teachers/1/courses",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"teachers",
+								"1",
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all courses by teacher id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/api/v1/teachers/2/courses",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"teachers",
+										"2",
+										"courses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:21:40 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"courseName\": \"English\",\n        \"courseDescription\": \"Math courseDescription\",\n        \"authorName\": \"Eadl\",\n        \"genre\": \"Computer Science\",\n        \"courseReview\": 0\n    },\n    {\n        \"courseName\": \"Algorithm-03\",\n        \"courseDescription\": \"Introduction to Algorithms\",\n        \"authorName\": \"Thomas H. Cormen\",\n        \"genre\": \"Computer Science\",\n        \"courseReview\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get course by course id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/teachers/courses/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"teachers",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get course by course id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/api/v1/teachers/courses/10",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"teachers",
+										"courses",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:22:40 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"courseName\": \"Compiler Design\",\n    \"courseDescription\": \"Compiler Design courseDescription\",\n    \"authorName\": \"Yormen\",\n    \"genre\": \"Computer Science\",\n    \"courseReview\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get teacher by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/teachers/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"teachers",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get teacher by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/api/v1/teachers/5",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"teachers",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:23:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"firstName\": \"Md. \",\n    \"lastName\": \"Rana\",\n    \"email\": \"rana@gmail.com1\",\n    \"phone\": \"329837\",\n    \"designation\": \"AST\",\n    \"address\": \"Barishal\",\n    \"password\": \"$2a$10$cTLO5zucsA4ezm.8upaDEuDwJ9HNMGSb76KLEV2nc/lXxpp7B0OfO\",\n    \"courses\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove teacher by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/teachers/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"teachers",
+								"8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove teacher by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/api/v1/teachers/8",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"teachers",
+										"8"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:23:31 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Teacher not found for id:  8\",\n    \"statusCode\": \"404\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove course by teacher",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/teachers/courses/20",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"teachers",
+								"courses",
+								"20"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove course by teacher",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"mdirfan@gmail.com\",\r\n    \"password\":\"mdirfan\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/api/v1/teachers/courses/13",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"teachers",
+										"courses",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:23:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Course Removed Success!"
+						}
+					]
+				},
+				{
+					"name": "Create course by teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseName\":\"Bangla\",\r\n    \"courseDescription\":\"Introduction to Bangla History\",\r\n    \"authorName\":\"Abdul kader\",\r\n    \"genre\":\"bangla\",\r\n    \"teacherId\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/teachers/create-courses",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"teachers",
+								"create-courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create course by teacher",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courseName\":\"Bangla\",\r\n    \"courseDescription\":\"Introduction to Bangla History\",\r\n    \"authorName\":\"Abdul kader\",\r\n    \"genre\":\"bangla\",\r\n    \"teacherId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/api/v1/teachers/create-courses",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"teachers",
+										"create-courses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:24:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Course created Successfully"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "student service",
+			"item": [
+				{
+					"name": "Course enrollment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseId\":10,\r\n    \"studentId\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/api/v1/students/enroll",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"enroll"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Course enrollment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courseId\":10,\r\n    \"studentId\":10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8083/api/v1/students/enroll",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"students",
+										"enroll"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:25:57 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Enrolled success"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"jewel@gmail.com\",\r\n    \"password\":\"jewel\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/api/v1/students/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"jewel@gmail.com\",\r\n    \"password\":\"jewel\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8083/api/v1/students/signin",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"students",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "17"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:26:42 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Login Successful!"
+						}
+					]
+				},
+				{
+					"name": "Get student by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"jewel@gmail.com\",\r\n    \"password\":\"jewel\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/api/v1/students/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get student by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"jewel@gmail.com\",\r\n    \"password\":\"jewel\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8083/api/v1/students/6",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"students",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:27:14 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"firstName\": \"Jewel\",\n    \"lastName\": \"Chowdhury\",\n    \"email\": \"jewel@gmail.com\",\n    \"address\": \"Dhaka\",\n    \"password\": \"$2a$10$Ku62UeE7LMjE.5wb4nffL.Fe2NGn5yxdXyC8OYGFLqKdvSaURr96K\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get student full details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"jewel@gmail.com\",\r\n    \"password\":\"jewel\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/api/v1/students/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get student full details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"jewel@gmail.com\",\r\n    \"password\":\"jewel\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8083/api/v1/students/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"students",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:27:29 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"firstName\": \"Md\",\n    \"lastName\": \"Emam\",\n    \"email\": \"emam2@gmail.com\",\n    \"address\": \"Dhaka\",\n    \"password\": \"$2a$10$yqeP2nK4KG/iicGjRmvNnefQBitAZVnOHu7SBTGRG7VhqlSrDcqLS\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all students",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"email\":\"jewel@gmail.com\",\r\n    \"password\":\"jewel\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/api/v1/students",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all students",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n    \"email\":\"jewel@gmail.com\",\r\n    \"password\":\"jewel\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8083/api/v1/students",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"students"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:27:57 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"firstName\": \"Md4\",\n        \"lastName\": \"Emam4\",\n        \"email\": \"emam4@gmail.com\",\n        \"address\": \"Dhaka\",\n        \"password\": \"$2a$10$snyg63NacjLo8knVlRz8cOzSIO0N1Owi0nh.bEolkH.ECKyp68pJO\"\n    },\n    {\n        \"firstName\": \"Md\",\n        \"lastName\": \"Emam\",\n        \"email\": \"emam2@gmail.com\",\n        \"address\": \"Dhaka\",\n        \"password\": \"$2a$10$yqeP2nK4KG/iicGjRmvNnefQBitAZVnOHu7SBTGRG7VhqlSrDcqLS\"\n    },\n    {\n        \"firstName\": \"Md4\",\n        \"lastName\": \"Emam4\",\n        \"email\": \"emam5@gmail.com\",\n        \"address\": \"Dhaka\",\n        \"password\": \"$2a$10$fr/TFlhKJ2h8OGDDxBxyH.1mV4fby8q3oEO6sLuo6BAWWwMbrEyNa\"\n    },\n    {\n        \"firstName\": \"Jewel\",\n        \"lastName\": \"Chowdhury\",\n        \"email\": \"jewel@gmail.com\",\n        \"address\": \"Dhaka\",\n        \"password\": \"$2a$10$Ku62UeE7LMjE.5wb4nffL.Fe2NGn5yxdXyC8OYGFLqKdvSaURr96K\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Jewel\",\r\n    \"lastName\":\"Chowdhury\",\r\n    \"email\":\"jewel@gmail.com\",\r\n    \"phone\":\"329837\",\r\n    \"password\":\"jewel\",\r\n    \"address\":\"Dhaka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/api/v1/students/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\":\"Jewel\",\r\n    \"lastName\":\"Chowdhury\",\r\n    \"email\":\"jewel@gmail.com\",\r\n    \"phone\":\"329837\",\r\n    \"password\":\"jewel\",\r\n    \"address\":\"Dhaka\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8083/api/v1/students/signup",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"students",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Sep 2022 04:26:20 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Registration Completed Successfully!"
+						}
+					]
+				},
+				{
+					"name": "signup Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Jewel\",\r\n    \"lastName\":\"Chowdhury\",\r\n    \"email\":\"jewel@gmail.com\",\r\n    \"phone\":\"329837\",\r\n    \"password\":\"jewel\",\r\n    \"address\":\"Dhaka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/api/v1/students/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
