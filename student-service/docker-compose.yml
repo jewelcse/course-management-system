@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  student-service-api:
+    image: 'student-service'
+    ports:
+      - "8083:8080"
+    build:
+      context: .
+    container_name: student-service-app
+    depends_on:
+      - student-service-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://student-service-db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - assignment-1-network
+
+  student-service-db:
+    image: 'postgres:13.1-alpine'
+    container_name: student-service-db
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    networks:
+      - assignment-1-network
+networks:
+  assignment-1-network:
+    external: true

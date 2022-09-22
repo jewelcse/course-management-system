@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  teacher-service-api:
+    image: 'teacher-service'
+    ports:
+      - "8082:8080"
+    build:
+      context: .
+    container_name: teacher-service-app
+    depends_on:
+      - teacher-service-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://teacher-service-db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - assignment-1-network
+
+  teacher-service-db:
+    image: 'postgres:13.1-alpine'
+    container_name: teacher-service-db
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    networks:
+      - assignment-1-network
+networks:
+  assignment-1-network:
+    external: true
+

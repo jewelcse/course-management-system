@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  course-service-api:
+    image: 'course-service'
+    ports:
+      - "8081:8080"
+    build:
+      context: .
+    container_name: course-service-app
+    depends_on:
+      - course-service-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://course-service-db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - assignment-1-network
+
+  course-service-db:
+    image: 'postgres:13.1-alpine'
+    container_name: course-service-db
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    networks:
+      - assignment-1-network
+
+networks:
+  assignment-1-network:
+    external: true
+
+#    links:
+#      - course-service-api
+#    networks:
+#      - assignment1-network
+#  networks:
+#    db_assignment1-network:
+#      external: true
+
+
+#networks:
+#  assignment1-network:
+#    driver: bridge
