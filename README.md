@@ -55,7 +55,7 @@ Before build and run the container, create a custom network first.
 
 Navigate to each services then open the terminal and run the following command.
 ```bash
-docker create network assignment-1-network
+docker network create  assignment-1-network
 ```
 
 Build the containers
