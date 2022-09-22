@@ -51,9 +51,9 @@ mvn package -Dmaven.test.skip
 
 To build and run the docker container, must have Installed the docker desktop on your local machine.
 
-Before build and run the container, create a customr network first
+Before build and run the container, create a custom network first.
 
-Navigate to the service then open the terminal and run the following command.
+Navigate to each services then open the terminal and run the following command.
 ```bash
 docker create network assignment-1-network
 ```
