@@ -1,8 +1,8 @@
 
 # Course Management System
 
-A micro-service based rest services that's manages the courses,student and teachers of an institution. There are three micro-services
-ex. 1. course micro-service 2. student micro-service 3. teacher micro-service. All three has their own
+A microservice based rest services that's manages the courses,student and teachers of an institution. There are three micro-services
+ex. 1. course microservice 2. student microservice 3. teacher microservice. All three has their own
 responsibility.
 
 
@@ -18,11 +18,11 @@ responsibility.
 
 **Client:** Spring Boot, Lombok, Mapstruct, Spring Security, Spring Data JPA, Validation API, Swagger2, Swagger UI, Commons Logging
 
-**Database:** postgreSQL
+**Database:** postgresSQL
 
 **Testing:** Unit Testing, Integration Testing
 
-**Server:** Tomcate 
+**Server:** Tomcat 
 
 
 
@@ -39,7 +39,7 @@ git clone https://github.com/jewelcse/course-management-system.git
 ```bash
 cd course-management-system
 ```
-Buid jar files
+Build jar files
 
 ```bash
 mvn package
@@ -53,7 +53,7 @@ To build and run the docker container, must have Installed the docker desktop on
 
 Before build and run the container, create a custom network first.
 
-Navigate to each services then open the terminal and run the following command.
+Navigate to each service's then open the terminal and run the following command.
 ```bash
 docker network create  assignment-1-network
 ```
@@ -70,7 +70,7 @@ Run the containers
 docker compose up
 ```
 ## API Reference
-[See the full api documention from here](https://documenter.getpostman.com/view/7197408/2s7ZE1P6Xi)
+[See the full api documentation from here](https://documenter.getpostman.com/view/7197408/2s7ZE1P6Xi)
 
 
 
